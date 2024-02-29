@@ -7,11 +7,10 @@ import (
 func main() {
 
 	mike := Student{Human{"mike", 35, "0955444555"}, "MIT", 35212.02}
-	//tom:=Student{Human:{"tom",45,"0922222222"},"abc",65442.14}
-	//定義 Men 型別的變數 i
-	var i Men
-	i=mike
 	fmt.Println(mike.school)
+	mike.sing("223") //Human: i am singing 223
+	mike.sayHi()//Student: i am mike ,my phone is 0955444555
+	mike.Human.sayHi() //Human: i am mike ,my phone is 0955444555
 }
 
 //什麼是 interface
@@ -38,14 +37,14 @@ type Student struct {
 }
 
 func (h *Human) sayHi() {
-	fmt.Println("Human: i am %s ,my phone is %s", h.name, h.phone)
+	fmt.Printf("Human: i am %s ,my phone is %s\n", h.name, h.phone)
 }
 func (h *Human) sing(str string) {
 	fmt.Println("Human: i am singing %s", str)
 }
 
 func (s *Student) sayHi() { //過載 Human 的 SayHi 方法
-	fmt.Println("Student: i am %s ,my phone is %s", s.name, s.phone)
+	fmt.Printf("Student: i am %s ,my phone is %s\n", s.name, s.phone)
 }
 
 func (s *Student) borrow(amount float32) {
@@ -63,6 +62,3 @@ type Young interface { //Student 實現了此介面 也實現了Men介面
 	sayHi(hi string)
 	borrow(amount float32)
 }
-
-//interface 值
-//定義了一個 interface 的變數，那麼這個變數裡面可以存實現這個 interface 的任意型別的物件
